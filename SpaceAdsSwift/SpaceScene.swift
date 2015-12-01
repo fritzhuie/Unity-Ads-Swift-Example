@@ -69,7 +69,6 @@ class SpaceScene: SKScene {
             if(node.name == nil) {
                 continue
             }
-            print(node.name)
             if(node.name == "adButton"){
                 UnityAdsPlayVideo()
                 break
@@ -108,14 +107,12 @@ class SpaceScene: SKScene {
         console.size.height = self.frame.size.height + 10
         console.size.width = self.frame.size.width + 10
         console.zPosition = 3
-        console.userInteractionEnabled = false
         rootNode.addChild(console)
         
         background.position = CGPointMake(self.frame.midX, self.frame.midY)
         background.size.width = self.frame.size.width + 100
         background.size.height = (background.size.width * (1035/1365))
         background.zPosition = -1
-        background.userInteractionEnabled = false
         rootNode.addChild(background)
         
         fuelIcon.position = CGPointMake(self.frame.midX + 190, self.frame.midY - 120)
@@ -123,7 +120,6 @@ class SpaceScene: SKScene {
         fuelIcon.alpha = 0.6
         fuelIcon.size.width = 42
         fuelIcon.zPosition = 3
-        fuelIcon.userInteractionEnabled = false
         rootNode.addChild(fuelIcon)
         
         fuelPercentage.fontColor = SKColor(colorLiteralRed: 0, green: 144, blue: 255, alpha: 50)
@@ -132,7 +128,6 @@ class SpaceScene: SKScene {
         fuelPercentage.position = CGPointMake(self.frame.midX + 235, self.frame.midY - 120 - fuelPercentage.fontSize/2)
         fuelPercentage.zPosition = 3
         fuelPercentage.text = "\(fuel)%"
-        fuelPercentage.userInteractionEnabled = false
         rootNode.addChild(fuelPercentage)
         
         adButton.name = "adButton"
@@ -179,7 +174,6 @@ class SpaceScene: SKScene {
         
         starTravelNodes.position = self.frame.origin
         starTravelNodes.zPosition = 1
-        starTravelNodes.userInteractionEnabled = false
         rootNode.addChild(starTravelNodes)
         generateParalaxStarscape()
     }

@@ -45,7 +45,7 @@ class GameViewController: UIViewController, UnityAdsDelegate {
                 let currentScene = scene as! PlanetScene
                 currentScene.UnityAdsGetReward()
             } else {
-                print("scene not found")
+                print("selector 'UnityAdsGetReward' not available for scene \(scene)")
             }
         }
         playerIsWatchingRewardedVideo = false

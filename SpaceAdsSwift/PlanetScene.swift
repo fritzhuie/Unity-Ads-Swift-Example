@@ -43,6 +43,7 @@ class PlanetScene : SKScene {
     let gatherButton = SKSpriteNode(imageNamed: "gatherbutton.png")
     let crosshairs = SKSpriteNode(imageNamed: "tricurser.png")
     var crosshairsCalled = false
+    var touchEnabled = true
     
     override func didMoveToView(view: SKView) {
         if(self.children.count == 0) {
@@ -76,7 +77,6 @@ class PlanetScene : SKScene {
         fuelIcon.alpha = 0.6
         fuelIcon.size.width = 42
         fuelIcon.zPosition = 3
-        fuelIcon.userInteractionEnabled = false
         rootNode.addChild(fuelIcon)
         
         fuelPercentage.fontColor = SKColor(colorLiteralRed: 0, green: 144, blue: 255, alpha: 50)
@@ -85,7 +85,6 @@ class PlanetScene : SKScene {
         fuelPercentage.position = CGPointMake(self.frame.midX + 235, self.frame.midY - 120 - fuelPercentage.fontSize/2)
         fuelPercentage.zPosition = 3
         fuelPercentage.text = "\(fuel)%"
-        fuelPercentage.userInteractionEnabled = false
         rootNode.addChild(fuelPercentage)
         
         console.position.x = self.frame.midX - 5
@@ -93,14 +92,12 @@ class PlanetScene : SKScene {
         console.size.height = self.frame.size.height + 10
         console.size.width = self.frame.size.width + 10
         console.zPosition = 4
-        console.userInteractionEnabled = false
         rootNode.addChild(console)
         
         frost.position = CGPointMake(self.frame.midX, self.frame.midY)
         frost.size.width = self.frame.size.width
         frost.size.height = (background.size.width * (1600/2560)) //2560 × 1600 pixels
         frost.zPosition = 2
-        frost.userInteractionEnabled = false
         rootNode.addChild(frost)
         let defrost = SKAction.sequence([SKAction.waitForDuration(4), SKAction.fadeAlphaTo(0.0, duration: 2)])
         frost.runAction(defrost)
@@ -131,10 +128,22 @@ class PlanetScene : SKScene {
         generateSnow()
     }
     
+    func enableTouch() {
+        touchEnabled = true
+    }
+    
+    func disableTouch() {
+        touchEnabled = false
+    }
+    
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         let touch = touches.first! as UITouch
         let touchLocation = touch.locationInNode(rootNode)
         let touchedNodes = rootNode.nodesAtPoint(touchLocation)
+        
+        if (!touchEnabled) {
+            return
+        }
         
         for node in touchedNodes {
             if(node.name == nil) {
@@ -156,7 +165,6 @@ class PlanetScene : SKScene {
     }
     
     func hide(node: SKSpriteNode) {
-        node.userInteractionEnabled = false
         node.runAction(SKAction.sequence([SKAction.scaleYTo(0.1, duration: 0.1), SKAction.hide()]))
     }
     
@@ -167,8 +175,6 @@ class PlanetScene : SKScene {
     }
     
     func addCrosshairs() {
-        
-        
         crosshairs.size.width = 100
         crosshairs.size.height = 100
         crosshairs.alpha = 0.7
@@ -178,7 +184,7 @@ class PlanetScene : SKScene {
         crosshairs.name = "crosshairs"
         rootNode.addChild(crosshairs)
         let zoom = SKAction.scaleTo(1, duration: 0.5)
-        crosshairs.runAction(zoom)
+        crosshairs.runAction(SKAction.sequence([SKAction.performSelector("disableTouch", onTarget: self), zoom, SKAction.performSelector("enableTouch", onTarget: self)]))
         let rotate = SKAction.repeatActionForever(SKAction.rotateByAngle(2*3.1415926, duration: 3))
         crosshairs.runAction(rotate)
         crosshairsCalled = true
@@ -281,6 +287,7 @@ class PlanetScene : SKScene {
             fuel = 100
             fuelIcon.texture = SKTexture(imageNamed: "battery100.png")
             hide(gatherButton)
+            hide(rewardedAdButton)
             addCrosshairs()
         }else if (fuel > 65){
             fuelIcon.texture = SKTexture(imageNamed: "battery75.png")
