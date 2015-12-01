@@ -4,6 +4,7 @@
 //
 //  Created by Fritz Huie on 11/16/15.
 //  Copyright © 2015 Unity. All rights reserved.
+//  Planet illustration provided by NASA - Original image by ESA/Hubble (M. Kornmesser) - https://www.spacetelescope.org/
 //
 
 import UIKit
