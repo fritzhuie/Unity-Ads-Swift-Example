@@ -2,12 +2,8 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <mutableArray key="CRYSTAL-Regular.ttf">
-            <string>CRYSTAL-Regular</string>
-        </mutableArray>
-    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="EHf-IW-A2E">
@@ -21,26 +17,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Swift Ads" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="91Y-FJ-j5B">
-                                <rect key="frame" x="5" y="117" width="576" height="287"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="SpaceAdsSpash.png" translatesAutoresizingMaskIntoConstraints="NO" id="M1X-VM-Bbl">
+                                <rect key="frame" x="172" y="205" width="240" height="128"/>
                                 <animations/>
-                                <fontDescription key="fontDescription" name="CRYSTAL-Regular" family="CRYSTAL" pointSize="72"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="M1X-VM-Bbl" secondAttribute="height" multiplier="2:1" id="48a-7G-4JD"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
-                            <constraint firstItem="91Y-FJ-j5B" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="I2B-cL-TmN"/>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="91Y-FJ-j5B" secondAttribute="bottom" constant="383" id="L2o-Zw-ZWu"/>
-                            <constraint firstItem="91Y-FJ-j5B" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="TWT-u1-u5W"/>
+                            <constraint firstItem="M1X-VM-Bbl" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" id="4yg-Yy-CzB"/>
+                            <constraint firstItem="M1X-VM-Bbl" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="yJ3-2X-DTA"/>
+                            <constraint firstItem="M1X-VM-Bbl" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="zhW-zl-NsG"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="L2o-Zw-ZWu"/>
-                            </mask>
-                        </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -48,5 +39,8 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="SpaceAdsSpash.png" width="512" height="256"/>
+    </resources>
     <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
 </document>

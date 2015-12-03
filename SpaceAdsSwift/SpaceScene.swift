@@ -10,11 +10,6 @@
 import UIKit
 import SpriteKit
 
-class SKStarNode : SKShapeNode {
-    var velocity = Int()
-    var brightness = Int()
-}
-
 class SpaceScene: SKScene {
     
     //**** Play rewarded ad from an SKScene *************
@@ -24,24 +19,6 @@ class SpaceScene: SKScene {
         vc.playAd("rewardedVideo", sender: self)
     }
     
-    //***************************************************
-    
-    
-    var fuel = 15
-    let fuelPercentage = SKLabelNode()
-    let starTravelNodes = SKNode()
-    var rootNode = SKNode()
-    let crosshairs = SKSpriteNode(imageNamed: "tricurser.png")
-    let planet = SKSpriteNode(imageNamed: "planetb.png")
-    var shipPosition = CGPoint()
-    var crosshairsCalled = false
-    let fuelIcon = SKSpriteNode(imageNamed: "battery25.png")
-    let background = SKSpriteNode(imageNamed: "stars.jpg")
-    let console = SKSpriteNode(imageNamed: "console.png")
-    let searchButton = SKSpriteNode(imageNamed: "locatefuelbutton.png")
-    let adButton = SKSpriteNode(imageNamed: "playadbutton.png")
-    let buttonSize = CGSizeMake(200, 100)
-    
     override func didMoveToView(view: SKView) {
         self.backgroundColor = SKColor.blackColor()
         if(self.children.count == 0) {
@@ -49,16 +26,6 @@ class SpaceScene: SKScene {
         }else{
             self.resetScene()
         }
-    }
-    
-    func hide(node: SKSpriteNode) {
-        node.runAction(SKAction.sequence([SKAction.scaleYTo(0.1, duration: 0.1), SKAction.hide()]))
-    }
-    
-    func reveal(node: SKSpriteNode, delay: Double) {
-        node.hidden = false
-        node.yScale = 0.01
-        node.runAction(SKAction.sequence([SKAction.waitForDuration(delay), SKAction.waitForDuration(0.3), SKAction.scaleYTo(1, duration: 0.1)]))
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -263,4 +230,35 @@ class SpaceScene: SKScene {
             }
         }
     }
+
+    func hide(node: SKSpriteNode) {
+        node.runAction(SKAction.sequence([SKAction.scaleYTo(0.1, duration: 0.1), SKAction.hide()]))
+    }
+    
+    func reveal(node: SKSpriteNode, delay: Double) {
+        node.hidden = false
+        node.yScale = 0.01
+        node.runAction(SKAction.sequence([SKAction.waitForDuration(delay), SKAction.waitForDuration(0.3), SKAction.scaleYTo(1, duration: 0.1)]))
+    }
+    
+    var fuel = 15
+    let fuelPercentage = SKLabelNode()
+    let starTravelNodes = SKNode()
+    var rootNode = SKNode()
+    let crosshairs = SKSpriteNode(imageNamed: "tricurser.png")
+    let planet = SKSpriteNode(imageNamed: "planetb.png")
+    var shipPosition = CGPoint()
+    var crosshairsCalled = false
+    let fuelIcon = SKSpriteNode(imageNamed: "battery25.png")
+    let background = SKSpriteNode(imageNamed: "stars.jpg")
+    let console = SKSpriteNode(imageNamed: "console.png")
+    let searchButton = SKSpriteNode(imageNamed: "locatefuelbutton.png")
+    let adButton = SKSpriteNode(imageNamed: "playadbutton.png")
+    let buttonSize = CGSizeMake(200, 100)
+}
+
+
+class SKStarNode : SKShapeNode {
+    var velocity = Int()
+    var brightness = Int()
 }

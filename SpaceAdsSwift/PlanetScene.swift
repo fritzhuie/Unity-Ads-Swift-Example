@@ -15,19 +15,15 @@ class Snowflake : SKStarNode {
 class PlanetScene : SKScene {
     
     //**** Play a non-skippable ad from SKScene *************
-    
     func UnityAdsPlayRewardedVideo() {
         let vc = self.view!.window!.rootViewController as! GameViewController
         vc.playAd("rewardedVideo", sender: self)
     }
     
     //**** Recieve callback from UIViewController *******
-    
     func UnityAdsGetReward() {
         addFuel(50)
     }
-    
-    //***************************************************
     
     var backgroundClicked = false
     var landed = false
