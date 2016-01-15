@@ -14,16 +14,18 @@ class Snowflake : SKStarNode {
 
 class PlanetScene : SKScene {
     
-    //**** Play a non-skippable ad from SKScene *************
+    //**** Play a non-skippable ad from SKScene *********
     func UnityAdsPlayRewardedVideo() {
         let vc = self.view!.window!.rootViewController as! GameViewController
         vc.playAd("rewardedVideo", sender: self)
     }
     
-    //**** Recieve callback from UIViewController *******
+    //**** callback from UIViewController *******
     func UnityAdsGetReward() {
         addFuel(50)
     }
+    
+    //***************************************************
     
     var backgroundClicked = false
     var landed = false
@@ -44,6 +46,34 @@ class PlanetScene : SKScene {
     override func didMoveToView(view: SKView) {
         if(self.children.count == 0) {
             initializeScene()
+        }
+    }
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        let touch = touches.first! as UITouch
+        let touchLocation = touch.locationInNode(rootNode)
+        let touchedNodes = rootNode.nodesAtPoint(touchLocation)
+        
+        if (!touchEnabled) {
+            return
+        }
+        
+        for node in touchedNodes {
+            if(node.name == nil) {
+                continue
+            }
+            if(node.name == "rewardedAdButton"){
+                
+                UnityAdsPlayRewardedVideo()
+                break
+                
+            }else if(node.name == "gather"){
+                addFuel(random()%5)
+                break
+            }else if(node.name == "crosshairs"){
+                gotoSpace()
+                break
+            }
         }
     }
     
@@ -130,34 +160,6 @@ class PlanetScene : SKScene {
     
     func disableTouch() {
         touchEnabled = false
-    }
-    
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        let touch = touches.first! as UITouch
-        let touchLocation = touch.locationInNode(rootNode)
-        let touchedNodes = rootNode.nodesAtPoint(touchLocation)
-        
-        if (!touchEnabled) {
-            return
-        }
-        
-        for node in touchedNodes {
-            if(node.name == nil) {
-                continue
-            }
-            if(node.name == "rewardedAdButton"){
-                
-                UnityAdsPlayRewardedVideo()
-                break
-                
-            }else if(node.name == "gather"){
-                addFuel(random()%5)
-                break
-            }else if(node.name == "crosshairs"){
-                gotoSpace()
-                break
-            }
-        }
     }
     
     func hide(node: SKSpriteNode) {

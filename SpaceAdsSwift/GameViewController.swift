@@ -14,30 +14,37 @@ class GameViewController: UIViewController, UnityAdsDelegate {
     var planetScene = PlanetScene()
     var scene = SKScene()
     
-    //Used to track rewarded video rewards in the client
+    //Used to track rewarded ads in the client
     var playerIsWatchingRewardedVideo = false
     
     override func viewDidLoad() {
+        
+        super.viewDidLoad()
         
         //initialize Unity Ads
         UnityAds.sharedInstance().delegate = self
         UnityAds.sharedInstance().startWithGameId("1016671", andViewController: self)
         
-        //initialize the SpriteKit Scene
-        super.viewDidLoad()
         spaceScene = SpaceScene(size: view.bounds.size)
         planetScene = PlanetScene(size: view.bounds.size)
         scene = spaceScene
-        let skView = view as! SKView
-        skView.showsFPS = true
-        skView.showsNodeCount = true
-        skView.ignoresSiblingOrder = true
-        scene.scaleMode = .ResizeFill
-        skView.presentScene(scene)
+        launchSpriteKitScene(scene)
     }
-
+    
+    func playAd(placement: String, sender: SKScene) {
+        scene = sender
+        playerIsWatchingRewardedVideo = (placement == "rewardedVideo")
+        UnityAds.sharedInstance().setZone(placement);
+        
+        if (UnityAds.sharedInstance().canShowZone(placement)) {
+            UnityAds.sharedInstance().show()
+        }else{
+            print("Ads are not ready for zoneId \(placement)")
+        }
+    }
+    
     func unityAdsVideoCompleted(rewardItemKey: String!, skipped: Bool) {
-        //Required by UnityAdsDelegate
+        //Unity Ads Callback - Called when ad finishes
         print("unityAdsVideoCompleted called with")
         print("reward key item: \(rewardItemKey), skipped: \(skipped)")
         if (!skipped && playerIsWatchingRewardedVideo) {
@@ -50,29 +57,13 @@ class GameViewController: UIViewController, UnityAdsDelegate {
         }
         playerIsWatchingRewardedVideo = false
         
+        launchSpriteKitScene(scene)
+    }
+    
+    func launchSpriteKitScene(scene: SKScene) {
         let skView = view as! SKView
-        skView.showsFPS = true
-        skView.showsNodeCount = true
         skView.ignoresSiblingOrder = true
         scene.scaleMode = .ResizeFill
         skView.presentScene(scene)
-    }
-    
-    func playAd(rewardedAd: String, sender: SKScene) {
-        scene = sender
-        if (UnityAds.sharedInstance().canShow()) {
-            if(rewardedAd == "rewardedVideo"){
-                playerIsWatchingRewardedVideo = true
-                UnityAds.sharedInstance().setZone("rewardedVideo");
-                //Player cannot skip video
-            }else{
-                playerIsWatchingRewardedVideo = false
-                UnityAds.sharedInstance().setZone("video");
-                //Player can skip after 5 seconds
-            }
-            print("Show: \(UnityAds.sharedInstance().show([kUnityAdsOptionNoOfferscreenKey:true, kUnityAdsOptionGamerSIDKey:"m", kUnityAdsOptionVideoUsesDeviceOrientation:true]))")
-        }else{
-            print("Ads are not ready")
-        }
     }
 }
