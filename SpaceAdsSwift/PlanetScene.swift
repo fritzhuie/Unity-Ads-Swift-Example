@@ -14,18 +14,20 @@ class Snowflake : SKStarNode {
 
 class PlanetScene : SKScene {
     
-    //**** Play a non-skippable ad from SKScene *********
+    //**** Play rewarded ad (non-skippable) *********/
+    
     func UnityAdsPlayRewardedVideo() {
         let vc = self.view!.window!.rootViewController as! GameViewController
         vc.playAd("rewardedVideo", sender: self)
     }
     
-    //**** callback from UIViewController *******
+    //**** callback from UIViewController ***********/
+    
     func UnityAdsGetReward() {
         addFuel(50)
     }
     
-    //***************************************************
+    //***********************************************/
     
     var backgroundClicked = false
     var landed = false
@@ -54,7 +56,7 @@ class PlanetScene : SKScene {
         let touchLocation = touch.locationInNode(rootNode)
         let touchedNodes = rootNode.nodesAtPoint(touchLocation)
         
-        if (!touchEnabled) {
+        if (touchEnabled == false) {
             return
         }
         
@@ -63,16 +65,14 @@ class PlanetScene : SKScene {
                 continue
             }
             if(node.name == "rewardedAdButton"){
-                
                 UnityAdsPlayRewardedVideo()
-                break
-                
+                return
             }else if(node.name == "gather"){
                 addFuel(random()%5)
-                break
+                return
             }else if(node.name == "crosshairs"){
                 gotoSpace()
-                break
+                return
             }
         }
     }

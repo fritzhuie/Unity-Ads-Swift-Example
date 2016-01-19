@@ -12,12 +12,14 @@ import SpriteKit
 
 class SpaceScene: SKScene {
     
-    //**** Play rewarded ad from an SKScene *************
+    //**** Play non-rewarded ad (5-second skip) *************/
     
     func UnityAdsPlayVideo() {
         let vc = self.view!.window!.rootViewController as! GameViewController
-        vc.playAd("rewardedVideo", sender: self)
+        vc.playAd("video", sender: self)
     }
+    
+    //******************************************************/
     
     override func didMoveToView(view: SKView) {
         self.backgroundColor = SKColor.blackColor()
@@ -42,9 +44,9 @@ class SpaceScene: SKScene {
                 break
                 
             }else if(node.name == "search"){
-                hide(searchButton)
                 if (!crosshairsCalled){
                     addcrosshairs()
+                    hide(searchButton)
                     break
                 }
             }else if(node.name == "crosshairs") {
