@@ -31,6 +31,7 @@
 		1F6D31211BFAB9C8002702D5 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F6D31201BFAB9C8002702D5 /* CoreMedia.framework */; };
 		1F6D31231BFAB9F4002702D5 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F6D31221BFAB9F4002702D5 /* SpriteKit.framework */; };
 		1F6D31251BFABA1F002702D5 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F6D31241BFABA1F002702D5 /* SystemConfiguration.framework */; };
+		1F9794721C4EF19600D594A5 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F9794711C4EF19600D594A5 /* arrow.png */; };
 		1FBFD7A41C0D21A70037DBB6 /* UnityAds.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1FBFD7A21C0D21A70037DBB6 /* UnityAds.bundle */; };
 		1FBFD7A51C0D21A70037DBB6 /* UnityAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FBFD7A31C0D21A70037DBB6 /* UnityAds.framework */; };
 		1FE2BDD01BE7E4DF0063D636 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE2BDCF1BE7E4DF0063D636 /* AppDelegate.swift */; };
@@ -68,6 +69,7 @@
 		1F6D31201BFAB9C8002702D5 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		1F6D31221BFAB9F4002702D5 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
 		1F6D31241BFABA1F002702D5 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		1F9794711C4EF19600D594A5 /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = arrow.png; path = Recources/arrow.png; sourceTree = "<group>"; };
 		1FBFD7A21C0D21A70037DBB6 /* UnityAds.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = UnityAds.bundle; sourceTree = "<group>"; };
 		1FBFD7A31C0D21A70037DBB6 /* UnityAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UnityAds.framework; sourceTree = "<group>"; };
 		1FE2BDCC1BE7E4DF0063D636 /* SpaceAdsSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceAdsSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -118,6 +120,7 @@
 				1F27BC971C0CDE9000C0CBC7 /* stars.jpg */,
 				1F27BC981C0CDE9000C0CBC7 /* tricurser.png */,
 				1F2178AD1C0FC7CF0094CE2C /* SpaceAdsSpash.png */,
+				1F9794711C4EF19600D594A5 /* arrow.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -235,6 +238,7 @@
 				1FBFD7A41C0D21A70037DBB6 /* UnityAds.bundle in Resources */,
 				1F27BC9F1C0CDE9000C0CBC7 /* gatherbutton.png in Resources */,
 				1F27BC9D1C0CDE9000C0CBC7 /* console.png in Resources */,
+				1F9794721C4EF19600D594A5 /* arrow.png in Resources */,
 				1FE2BDDE1BE7E4DF0063D636 /* LaunchScreen.storyboard in Resources */,
 				1F27BCA31C0CDE9000C0CBC7 /* playadbutton.png in Resources */,
 				1F27BCA11C0CDE9000C0CBC7 /* locatefuelbutton.png in Resources */,
