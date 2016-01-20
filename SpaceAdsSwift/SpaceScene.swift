@@ -245,6 +245,7 @@ class SpaceScene: SKScene {
     }
 
     func hide(node: SKSpriteNode) {
+        node.removeAllActions()
         node.runAction(SKAction.sequence([SKAction.scaleYTo(0.1, duration: 0.1), SKAction.hide()]))
     }
     

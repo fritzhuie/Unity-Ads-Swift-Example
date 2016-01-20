@@ -24,7 +24,7 @@ class PlanetScene : SKScene {
     //**** callback from UIViewController ***********/
     
     func UnityAdsGetReward() {
-        addFuel(50)
+        addFuel(40)
     }
     
     //***********************************************/
@@ -32,6 +32,7 @@ class PlanetScene : SKScene {
     var backgroundClicked = false
     var landed = false
     var fuel = 15
+    var displayedFuel = 15
     let rootNode = SKNode()
     let fuelPercentage = SKLabelNode()
     let snowflakes = SKNode()
@@ -68,7 +69,7 @@ class PlanetScene : SKScene {
                 UnityAdsPlayRewardedVideo()
                 return
             }else if(node.name == "gather"){
-                addFuel(random()%5)
+                addFuel(random()%4 + 2)
                 return
             }else if(node.name == "crosshairs"){
                 gotoSpace()
@@ -167,9 +168,8 @@ class PlanetScene : SKScene {
     }
     
     func reveal(node: SKSpriteNode, delay: Double) {
-        node.hidden = false
         node.yScale = 0.01
-        node.runAction(SKAction.sequence([SKAction.waitForDuration(delay), SKAction.waitForDuration(0.3), SKAction.scaleYTo(1, duration: 0.1)]))
+        node.runAction(SKAction.sequence([SKAction.waitForDuration(delay), SKAction.runBlock({node.hidden = false}), SKAction.scaleYTo(1, duration: 0.1)]))
     }
     
     func addCrosshairs() {
@@ -295,8 +295,23 @@ class PlanetScene : SKScene {
             fuelIcon.texture = SKTexture(imageNamed: "battery25.png")
         }
         
-        fuelPercentage.text = "\(fuel)%"
+        fuelPercentage.removeAllActions()
         
+        var fuelSequence = [SKAction]()
+        var fuelActionValue : Int = displayedFuel
+        
+        while ( fuelActionValue < fuel) {
+            fuelActionValue++
+            let fuelDisplayValue: Int = fuelActionValue
+            fuelSequence.append(SKAction.runBlock({
+                self.fuelPercentage.text = "\(fuelDisplayValue)%"
+                print(fuelDisplayValue)
+                self.displayedFuel = fuelDisplayValue
+            }))
+            fuelSequence.append(SKAction.waitForDuration(0.1))
+        }
+        
+        fuelPercentage.runAction(SKAction.sequence(fuelSequence))
     }
     
     func max (n: CGFloat, max: CGFloat)->CGFloat {
