@@ -72,6 +72,7 @@ class PlanetScene : SKScene {
                 addFuel(random()%4 + 2)
                 return
             }else if(node.name == "crosshairs"){
+                drainFuel()
                 gotoSpace()
                 return
             }
@@ -274,26 +275,37 @@ class PlanetScene : SKScene {
         scene?.view?.presentScene(nextScene)
     }
     
+    func drainFuel() {
+        fuel = 15
+        
+        fuelPercentage.removeAllActions()
+        
+        var fuelSequence = [SKAction]()
+        var fuelActionValue : Int = displayedFuel
+        
+        while ( fuelActionValue > fuel) {
+            fuelActionValue--
+            let fuelDisplayValue: Int = fuelActionValue
+            fuelSequence.append(SKAction.runBlock({
+                self.fuelPercentage.text = "\(fuelDisplayValue)%"
+                print(fuelDisplayValue)
+                self.displayedFuel = fuelDisplayValue
+                self.updatefuelIcon()
+            }))
+            fuelSequence.append(SKAction.waitForDuration(0.03))
+        }
+        
+        fuelPercentage.runAction(SKAction.sequence(fuelSequence))
+        
+    }
+    
     func addFuel(count: Int) {
 
         //you can use this example to pass values from the View Controller to your scene
         
-        if(count > 0) {
-            fuel+=count
-        }
-        if (fuel >= 100) {
-            fuel = 100
-            fuelIcon.texture = SKTexture(imageNamed: "battery100.png")
-            hide(gatherButton)
-            hide(rewardedAdButton)
-            addCrosshairs()
-        }else if (fuel > 65){
-            fuelIcon.texture = SKTexture(imageNamed: "battery75.png")
-        }else if (fuel > 35){
-            fuelIcon.texture = SKTexture(imageNamed: "battery50.png")
-        }else{
-            fuelIcon.texture = SKTexture(imageNamed: "battery25.png")
-        }
+        if(count < 1 || fuel == 100) {return}
+        
+        fuel = fuel > 100 - count ? 100 : fuel + count
         
         fuelPercentage.removeAllActions()
         
@@ -305,13 +317,30 @@ class PlanetScene : SKScene {
             let fuelDisplayValue: Int = fuelActionValue
             fuelSequence.append(SKAction.runBlock({
                 self.fuelPercentage.text = "\(fuelDisplayValue)%"
-                print(fuelDisplayValue)
                 self.displayedFuel = fuelDisplayValue
+                self.updatefuelIcon()
             }))
-            fuelSequence.append(SKAction.waitForDuration(0.1))
+            let delay = 0.5 / (3 + Double(self.fuel) - Double(displayedFuel))
+            fuelSequence.append(SKAction.waitForDuration(delay))
         }
         
         fuelPercentage.runAction(SKAction.sequence(fuelSequence))
+    }
+    
+    func updatefuelIcon() {
+        if (displayedFuel >= 100) {
+            displayedFuel = 100
+            fuelIcon.texture = SKTexture(imageNamed: "battery100.png")
+            hide(gatherButton)
+            hide(rewardedAdButton)
+            addCrosshairs()
+        }else if (displayedFuel > 75){
+            fuelIcon.texture = SKTexture(imageNamed: "battery75.png")
+        }else if (displayedFuel > 50){
+            fuelIcon.texture = SKTexture(imageNamed: "battery50.png")
+        }else{
+            fuelIcon.texture = SKTexture(imageNamed: "battery25.png")
+        }
     }
     
     func max (n: CGFloat, max: CGFloat)->CGFloat {
