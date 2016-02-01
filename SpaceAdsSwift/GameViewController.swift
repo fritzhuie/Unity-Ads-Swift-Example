@@ -23,6 +23,7 @@ class GameViewController: UIViewController, UnityAdsDelegate {
         
         //initialize Unity Ads
         UnityAds.sharedInstance().delegate = self
+        UnityAds.sharedInstance().setTestMode(true)
         UnityAds.sharedInstance().startWithGameId("1016671", andViewController: self)
         
         spaceScene = SpaceScene(size: view.bounds.size)
@@ -34,8 +35,7 @@ class GameViewController: UIViewController, UnityAdsDelegate {
     func playAd(placement: String, sender: SKScene) {
         scene = sender
         playerIsWatchingRewardedVideo = (placement == "rewardedVideo")
-        UnityAds.sharedInstance().setZone(placement);
-        
+        UnityAds.sharedInstance().setZone(placement)
         if (UnityAds.sharedInstance().canShowZone(placement)) {
             UnityAds.sharedInstance().show()
         }else{

@@ -90,6 +90,13 @@ class SpaceScene: SKScene {
         fuelIcon.size.height = 50
         fuelIcon.alpha = 0.6
         fuelIcon.size.width = 42
+        if (deviceIsAniPad) {
+            fuelIcon.position = CGPointMake(self.frame.midX + 200, self.frame.midY - 250)
+            fuelIcon.size.width*=1.5
+            fuelIcon.size.height*=1.5
+        }else{
+            fuelIcon.position = CGPointMake(self.frame.midX + 190, self.frame.midY - 120)
+        }
         fuelIcon.zPosition = 3
         rootNode.addChild(fuelIcon)
         
@@ -102,9 +109,16 @@ class SpaceScene: SKScene {
         rootNode.addChild(fuelPercentage)
         
         adButton.name = "adButton"
-        adButton.position = CGPointMake(self.frame.midX - 180, self.frame.midY - 120)
         adButton.size = buttonSize
         adButton.zPosition = 4
+        adButton.size = buttonSize
+        if (deviceIsAniPad) {
+            adButton.position = CGPointMake(self.frame.midX - 300, self.frame.midY - 250)
+            adButton.size.height*=1.5
+            adButton.size.width*=1.5
+        }else{
+            adButton.position = CGPointMake(self.frame.midX - 180, self.frame.midY - 120)
+        }
         rootNode.addChild(adButton)
         
         searchButton.name = "search"
@@ -279,6 +293,7 @@ class SpaceScene: SKScene {
     let adButton = SKSpriteNode(imageNamed: "playadbutton.png")
     let tapArrow = SKSpriteNode(imageNamed: "arrow.png")
     let buttonSize = CGSizeMake(200, 100)
+    var deviceIsAniPad: Bool = UIDevice.currentDevice().userInterfaceIdiom == .Pad
 }
 
 
