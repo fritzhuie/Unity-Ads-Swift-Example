@@ -4,25 +4,31 @@ This is an example project for implementing the Unity Ads SDK in a SpriteKit gam
 
 #How to integrate Unity Ads into your project
 
-### Import the Unity Ads Framework
+## 1. Import the Unity Ads Framework
 
-1. Download the Unity SDK from https://github.com/Applifier/unity-ads-sdk
+####Download the Unity SDK from https://github.com/Applifier/unity-ads-sdk
   - [Down the zip file](https://github.com/Applifier/unity-ads-sdk/archive/master.zip)
   - Unzip the project, and locate `UnityAds.framework` and `UnityAds.bundle`
 
-2. Import `UnityAds.framework` and `UnityAds.bundle` into your project
+####Import `UnityAds.framework` and `UnityAds.bundle` into your project
   - Drag and drop the files into your project
   - Select the box next to "Copy 
 
-3. Make sure all of the following dependancies are enabled in your project
+####Make sure all of the following dependancies are enabled in your project
+  
+  `CoreMedia.framework`,  `CoreTelephony.framework`,
+  
+  `SystemConfiguration.framework`, `AdSupport.framework`,
+  
+  `CFNetwork.framework`, `StoreKit.framework`
 
-`CoreMedia.framework`,  `CoreTelephony.framework`,
+####Add a bridging header for `UnityAds.framework`
+  - Create a new file in your project called **UnityAds-Bridging-Header.h**
+  - In the file, add the following line:
+  
+> **`#import <UnityAds/UnityAds.h>`**
 
-`SystemConfiguration.framework`, `AdSupport.framework`,
-
-`CFNetwork.framework`, `StoreKit.framework`
-
-4. Add a bridging header for `UnityAds.framework`
+## 2. Initialize Unity Ads
 
 ####In Your AppDelegate:
 - Create a shared instance of Unity ads
