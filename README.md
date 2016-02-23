@@ -1,13 +1,28 @@
-# SpaceAds-Swift
-An example project for implementing the Unity Ads SDK in SpriteKit using Swift
+This is an example project for implementing the Unity Ads SDK in a SpriteKit game using Swift
 
 <i>Planet illustration provided by NASA - Original image by ESA/Hubble (M. Kornmesser) - https://www.spacetelescope.org/</i>
 
-##Integration summary:
+#How to integrate Unity Ads into your project
 
-- Download Unity SDK from https://github.com/Applifier/unity-ads-sdk
+### Import the Unity Ads Framework
 
-- Import UnityAds.framework and UnityAds.bundle to your project
+1. Download the Unity SDK from https://github.com/Applifier/unity-ads-sdk
+  - [Down the zip file](https://github.com/Applifier/unity-ads-sdk/archive/master.zip)
+  - Unzip the project, and locate `UnityAds.framework` and `UnityAds.bundle`
+
+2. Import `UnityAds.framework` and `UnityAds.bundle` into your project
+  - Drag and drop the files into your project
+  - Select the box next to "Copy 
+
+3. Make sure all of the following dependancies are enabled in your project
+
+`CoreMedia.framework`,  `CoreTelephony.framework`,
+
+`SystemConfiguration.framework`, `AdSupport.framework`,
+
+`CFNetwork.framework`, `StoreKit.framework`
+
+4. Add a bridging header for `UnityAds.framework`
 
 ####In Your AppDelegate:
 - Create a shared instance of Unity ads
