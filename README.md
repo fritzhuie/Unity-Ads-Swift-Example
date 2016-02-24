@@ -2,7 +2,7 @@ This is an example project for implementing the Unity Ads SDK in a SpriteKit gam
 
 <i>Planet illustration provided by NASA - Original image by ESA/Hubble (M. Kornmesser) - https://www.spacetelescope.org/</i>
 
-#How to integrate Unity Ads into your project
+# How to integrate Unity Ads into your Swift project
 
 ### Import the Unity Ads Framework
 
@@ -21,6 +21,10 @@ Make sure the following dependancies are enabled in your project
   `SystemConfiguration.framework`, `AdSupport.framework`,  
   
   `CFNetwork.framework`, `StoreKit.framework`  
+  
+  1. Click your project settings
+  2. select **Build Phases** > **Link Binary With Library**
+  3. Click the **+** button > select the Framework > Click **Add**
 
 Add a bridging header for **UnityAds.framework**
   - Create a new file in your project called **UnityAds-Bridging-Header.h**
