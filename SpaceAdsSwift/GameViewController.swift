@@ -24,7 +24,7 @@ class GameViewController: UIViewController, UnityAdsDelegate {
         //initialize Unity Ads
         UnityAds.sharedInstance().delegate = self
         UnityAds.sharedInstance().setTestMode(true)
-        UnityAds.sharedInstance().startWithGameId("1016671", andViewController: self)
+        UnityAds.sharedInstance().startWithGameId("1003843", andViewController: self)
         
         spaceScene = SpaceScene(size: view.bounds.size)
         planetScene = PlanetScene(size: view.bounds.size)
@@ -39,14 +39,12 @@ class GameViewController: UIViewController, UnityAdsDelegate {
         if (UnityAds.sharedInstance().canShowZone(placement)) {
             UnityAds.sharedInstance().show()
         }else{
-            print("Ads are not ready for zoneId \(placement)")
+            print("Ads are not ready for placement `\(placement)`")
         }
-    }
+    }   
     
     func unityAdsVideoCompleted(rewardItemKey: String!, skipped: Bool) {
         //Unity Ads Callback - Called when ad finishes
-        print("unityAdsVideoCompleted called with")
-        print("reward key item: \(rewardItemKey), skipped: \(skipped)")
         if (!skipped && playerIsWatchingRewardedVideo) {
             if scene.respondsToSelector("UnityAdsGetReward") {
                 let currentScene = scene as! PlanetScene

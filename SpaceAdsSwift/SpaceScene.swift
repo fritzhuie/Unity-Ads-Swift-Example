@@ -36,6 +36,7 @@ class SpaceScene: SKScene {
         let touchedNodes = rootNode.nodesAtPoint(touchLocation)
         
         for node in touchedNodes {
+            
             if(node.name == nil) {
                 continue
             }
@@ -64,7 +65,7 @@ class SpaceScene: SKScene {
         planet.size.height = 300
         planet.size.width = 300
         planet.zPosition = 0
-        let planetMovement = SKAction.moveBy(CGVector(dx: -300, dy: 0), duration: 100)
+        let planetMovement = SKAction.moveBy(CGVector(dx: -200, dy: 0), duration: 100)
         planet.runAction(planetMovement)
         
         fuelIcon.texture = SKTexture(imageNamed: "battery25.png")
