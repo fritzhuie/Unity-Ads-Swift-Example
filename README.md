@@ -4,6 +4,11 @@ This is an example project for implementing the Unity Ads SDK in a SpriteKit gam
 
 # How to integrate Unity Ads into your Swift project
 
+### Create a Game Project on the [Unity Ads Dashboard](https://dashboard.unityads.unity3d.com)
+- Log into the [dashboard](https://dashboard.unityads.unity3d.com) using your [UDN Account](https://accounts.unity3d.com/sign-in)
+- Create a new game project
+- Look for your iOS **Game ID** in the project, a 7-digit number that you will use in your integration
+
 ### Import the Unity Ads Framework
 
 Download the Unity SDK from https://github.com/Applifier/unity-ads-sdk
