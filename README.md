@@ -12,44 +12,49 @@ This is an example project for implementing the Unity Ads SDK in a SpriteKit gam
 ### Import the Unity Ads Framework
 
 Download the Unity SDK from https://github.com/Applifier/unity-ads-sdk
-  - [Download the SDK zip file](https://github.com/Applifier/unity-ads-sdk/archive/master.zip)
-  - Unzip the project, and locate **UnityAds.framework** and **UnityAds.bundle**
+  1. [Download the SDK zip file](https://github.com/Applifier/unity-ads-sdk/archive/master.zip)
+  2. Unzip the project, and locate **UnityAds.framework** and **UnityAds.bundle**
 
 Import **UnityAds.framework** and **UnityAds.bundle** into your project
-  - Drag and drop the files into your project's file manager
-  - Select the box next to **"Copy items if needed"**
+  1. Drag and drop the files into your project's file manager
+  2. Select the box next to **"Copy items if needed"**
 
 Make sure the following dependancies are enabled in your project  
   
-  `CoreMedia.framework`,  `CoreTelephony.framework`,  
+> **AdSupport**.framework  
+> **AVFoundation**.framework  
+> **CFNetwork**.framework  
+> **CoreFoundation**.framework  
+> **CoreMedia**.framework  
+> **CoreTelephony**.framework  
+> **StoreKit**.framework  
+> **SystemConfiguration**.framework  
   
-  `SystemConfiguration.framework`, `AdSupport.framework`,  
   
-  `CFNetwork.framework`, `StoreKit.framework`  
   
   1. Click your project settings
   2. select **Build Phases** > **Link Binary With Library**
   3. Click the **+** button > select the Framework > Click **Add**
 
 Add a bridging header for **UnityAds.framework**
-  - Create a new file in your project called **UnityAds-Bridging-Header.h**
-  - In the file, add the following line:  
+  1. Create a new file in your project called **UnityAds-Bridging-Header.h**
+  2. In the file, add the following line:  
   
 **`#import <UnityAds/UnityAds.h>`**
 
 ### Initialize Unity Ads
 
 Add UnityAds to your **AppDelegate**
-- Open **AppDelegate.swift**
-- Create a shared instance of Unity ads by adding the following code to your **AppDelegate** class  
+1. Open **AppDelegate.swift**
+2. Create a shared instance of Unity ads by adding the following code to your **AppDelegate** class  
 ```Swift
 class AppDelegate: UIResponder, UIApplicationDelegate {
     static let unityAds = UnityAds() //Create a shared instance of Unity Ads
 ```
 
 Initialize Unity Ads in your *root ViewController*
-- Open your root ViewController
-- In **viewDidLoad()**, add the following code to initialize the SDK
+1. Open your root ViewController
+2. In **viewDidLoad()**, add the following code to initialize the SDK  
 ```Swift
 override func viewDidLoad() {
   super.viewDidLoad()
@@ -60,8 +65,7 @@ override func viewDidLoad() {
 ```
 > NOTE: The game ID in the example project is **1003843**, you need to replace this number with your own game ID
 
-Add the callback to your root ViewController  
-- In your root ViewController, add the following function
+Add the *@required* callback to your root ViewController  
 
 ```Swift
 func unityAdsVideoCompleted(rewardItemKey: String!, skipped: Bool {
@@ -70,9 +74,9 @@ func unityAdsVideoCompleted(rewardItemKey: String!, skipped: Bool {
   }
 }
 ```
-> Note: **rewardItemKey** is deprecated in the SDK; You can use custom zones to track rewards.
+> Note: **rewardItemKey** was deprecated; Use custom zones in the [dashboard](https://dashboard.unityads.unity3d.com) to track reward types
 
-### Show a video ad
+### Show a Video Ad
 
 In the root View Controller, the following function will play a video ad
 
@@ -87,5 +91,5 @@ func playAd(placement: String) {
 To call an ad from another ViewController (including a SpriteKit or Cocos2D scene)
 ```swift
 let vc = self.view!.window!.rootViewController as! YourRootViewController
-vc.playAd("rewardedVideo")
+vc.playAd("video")
 ```
