@@ -1,7 +1,7 @@
 This project provides two examples for integrating the Unity Ads SDK in a Swift SpriteKit game
 
 1. **Simple Example:** One scene, minimumal integration to play a video ad
-2. **Complete Example:** Multiple scenes can call ads, incentivized callbacks, rewarded placements
+2. **Complete Example:** Two scenes that can call for ads, incentivized callbacks, rewarded placements
 
 <i>Planet illustration provided by NASA - Original image by ESA/Hubble (M. Kornmesser) - https://www.spacetelescope.org/</i>
 
