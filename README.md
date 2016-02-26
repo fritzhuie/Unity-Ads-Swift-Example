@@ -48,8 +48,8 @@ Add a bridging header for **UnityAds.framework**
 ### Initialize Unity Ads
 
 Add UnityAds to your **AppDelegate**
-1. Open **AppDelegate.swift**
-2. Create a shared instance of Unity ads by adding the following code to your **AppDelegate** class  
+  1. Open **AppDelegate.swift**
+  2. Create a shared instance of Unity ads by adding the following code to your **AppDelegate** class  
 ```Swift
 class AppDelegate: UIResponder, UIApplicationDelegate {
     static let unityAds = UnityAds() //Create a shared instance of Unity Ads
