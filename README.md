@@ -1,4 +1,7 @@
-This is an example project for implementing the Unity Ads SDK in a SpriteKit game using Swift
+This project provides two examples for integrating the Unity Ads SDK in a Swift SpriteKit game
+
+1. **Simple Example:** One scene, minimumal integration to play a video ad
+2. **Complete Example:** Multiple scenes can call ads, incentivized callbacks, rewarded placements
 
 <i>Planet illustration provided by NASA - Original image by ESA/Hubble (M. Kornmesser) - https://www.spacetelescope.org/</i>
 
@@ -82,8 +85,8 @@ In the root View Controller, the following function will play a video ad
 
 ```swift
 func playAd(placement: String) {
-  if (UnityAds.sharedInstance().canShowZone("video")) {
-    UnityAds.sharedInstance().show()
+  if (UnityAds.sharedInstance().canShow(placement)) {
+    UnityAds.sharedInstance().show(placement)
   }
 }
 ```
@@ -93,3 +96,5 @@ To call an ad from another ViewController (including a SpriteKit or Cocos2D scen
 let vc = self.view!.window!.rootViewController as! YourRootViewController
 vc.playAd("video")
 ```
+
+For more information, please see the [iOS Integration Guide](http://unityads.unity3d.com/help/monetization/integration-guide-ios), the [support Forum](http://forum.unity3d.com/forums/unity-ads.67/), or contact unityads-sales@unity3d.com
