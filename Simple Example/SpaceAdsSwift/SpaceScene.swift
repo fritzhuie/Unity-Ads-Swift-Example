@@ -37,14 +37,14 @@ class SpaceScene: SKScene {
         background.position = CGPointMake(self.frame.midX, self.frame.midY)
         background.size.width = self.frame.size.width + 100
         background.size.height = (background.size.width * (1035/1365))
-        background.zPosition = 0
+        background.zPosition = -2
         rootNode.addChild(background)
         
         rootNode.addChild(planet)
         planet.position = CGPointMake(self.frame.midX + 200, self.frame.midY - 20)
         planet.size.height = 300
         planet.size.width = 300
-        planet.zPosition = 1
+        planet.zPosition = -1
         let planetMovement = SKAction.moveBy(CGVector(dx: -200, dy: 0), duration: 100)
         planet.runAction(planetMovement)
         
