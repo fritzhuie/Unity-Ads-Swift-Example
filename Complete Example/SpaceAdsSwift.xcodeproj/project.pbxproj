@@ -22,18 +22,12 @@
 		1F27BCA51C0CDE9000C0CBC7 /* stars.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1F27BC971C0CDE9000C0CBC7 /* stars.jpg */; };
 		1F27BCA61C0CDE9000C0CBC7 /* tricurser.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F27BC981C0CDE9000C0CBC7 /* tricurser.png */; };
 		1F2EF37D1C038C7F0043A2E1 /* PlanetScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2EF37C1C038C7F0043A2E1 /* PlanetScene.swift */; };
-		1F6D31141BFAB885002702D5 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F6D31131BFAB885002702D5 /* StoreKit.framework */; };
-		1F6D31161BFAB88C002702D5 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F6D31151BFAB88C002702D5 /* AdSupport.framework */; };
-		1F6D311C1BFAB8EF002702D5 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F6D311B1BFAB8EF002702D5 /* CoreTelephony.framework */; };
-		1F6D311D1BFAB948002702D5 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F6D31191BFAB8D4002702D5 /* AVFoundation.framework */; };
-		1F6D311F1BFAB96F002702D5 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F6D311E1BFAB96F002702D5 /* CoreFoundation.framework */; };
-		1F6D31211BFAB9C8002702D5 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F6D31201BFAB9C8002702D5 /* CoreMedia.framework */; };
+		1F69FD4F1D87723400157FF1 /* UnityAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F69FD4E1D87723400157FF1 /* UnityAds.framework */; };
+		1F69FD501D87724700157FF1 /* UnityAds.framework in Resources */ = {isa = PBXBuildFile; fileRef = 1F69FD4E1D87723400157FF1 /* UnityAds.framework */; };
+		1F69FD541D87761100157FF1 /* UnityAds.framework in Embed Files */ = {isa = PBXBuildFile; fileRef = 1F69FD4E1D87723400157FF1 /* UnityAds.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1F6D31231BFAB9F4002702D5 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F6D31221BFAB9F4002702D5 /* SpriteKit.framework */; };
-		1F6D31251BFABA1F002702D5 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F6D31241BFABA1F002702D5 /* SystemConfiguration.framework */; };
 		1F9794721C4EF19600D594A5 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F9794711C4EF19600D594A5 /* arrow.png */; };
 		1FA646C31C80E1930043C3BB /* SpaceAdsSpash.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FA646C21C80E1930043C3BB /* SpaceAdsSpash.png */; };
-		1FBFD7A41C0D21A70037DBB6 /* UnityAds.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1FBFD7A21C0D21A70037DBB6 /* UnityAds.bundle */; };
-		1FBFD7A51C0D21A70037DBB6 /* UnityAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FBFD7A31C0D21A70037DBB6 /* UnityAds.framework */; };
 		1FE2BDD01BE7E4DF0063D636 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE2BDCF1BE7E4DF0063D636 /* AppDelegate.swift */; };
 		1FE2BDD41BE7E4DF0063D636 /* SpaceScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE2BDD31BE7E4DF0063D636 /* SpaceScene.swift */; };
 		1FE2BDD61BE7E4DF0063D636 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE2BDD51BE7E4DF0063D636 /* GameViewController.swift */; };
@@ -41,6 +35,20 @@
 		1FE2BDDB1BE7E4DF0063D636 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FE2BDDA1BE7E4DF0063D636 /* Assets.xcassets */; };
 		1FE2BDDE1BE7E4DF0063D636 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FE2BDDC1BE7E4DF0063D636 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		1F69FD531D8775F400157FF1 /* Embed Files */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				1F69FD541D87761100157FF1 /* UnityAds.framework in Embed Files */,
+			);
+			name = "Embed Files";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1F27BC8B1C0CDE9000C0CBC7 /* battery25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = battery25.png; path = Recources/battery25.png; sourceTree = "<group>"; };
@@ -58,20 +66,10 @@
 		1F27BC971C0CDE9000C0CBC7 /* stars.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = stars.jpg; path = Recources/stars.jpg; sourceTree = "<group>"; };
 		1F27BC981C0CDE9000C0CBC7 /* tricurser.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tricurser.png; path = Recources/tricurser.png; sourceTree = "<group>"; };
 		1F2EF37C1C038C7F0043A2E1 /* PlanetScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetScene.swift; sourceTree = "<group>"; };
-		1F6D31121BFAB61C002702D5 /* UnityAds-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UnityAds-Bridging-Header.h"; sourceTree = "<group>"; };
-		1F6D31131BFAB885002702D5 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		1F6D31151BFAB88C002702D5 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
-		1F6D31171BFAB8B8002702D5 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
-		1F6D31191BFAB8D4002702D5 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		1F6D311B1BFAB8EF002702D5 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
-		1F6D311E1BFAB96F002702D5 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
-		1F6D31201BFAB9C8002702D5 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		1F69FD4E1D87723400157FF1 /* UnityAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UnityAds.framework; sourceTree = "<group>"; };
 		1F6D31221BFAB9F4002702D5 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
-		1F6D31241BFABA1F002702D5 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		1F9794711C4EF19600D594A5 /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = arrow.png; path = Recources/arrow.png; sourceTree = "<group>"; };
 		1FA646C21C80E1930043C3BB /* SpaceAdsSpash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SpaceAdsSpash.png; path = Recources/SpaceAdsSpash.png; sourceTree = "<group>"; };
-		1FBFD7A21C0D21A70037DBB6 /* UnityAds.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = UnityAds.bundle; sourceTree = "<group>"; };
-		1FBFD7A31C0D21A70037DBB6 /* UnityAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UnityAds.framework; sourceTree = "<group>"; };
 		1FE2BDCC1BE7E4DF0063D636 /* SpaceAdsSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceAdsSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FE2BDCF1BE7E4DF0063D636 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1FE2BDD31BE7E4DF0063D636 /* SpaceScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceScene.swift; sourceTree = "<group>"; };
@@ -87,15 +85,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1F6D31251BFABA1F002702D5 /* SystemConfiguration.framework in Frameworks */,
 				1F6D31231BFAB9F4002702D5 /* SpriteKit.framework in Frameworks */,
-				1F6D31211BFAB9C8002702D5 /* CoreMedia.framework in Frameworks */,
-				1F6D311C1BFAB8EF002702D5 /* CoreTelephony.framework in Frameworks */,
-				1F6D311F1BFAB96F002702D5 /* CoreFoundation.framework in Frameworks */,
-				1F6D311D1BFAB948002702D5 /* AVFoundation.framework in Frameworks */,
-				1F6D31161BFAB88C002702D5 /* AdSupport.framework in Frameworks */,
-				1F6D31141BFAB885002702D5 /* StoreKit.framework in Frameworks */,
-				1FBFD7A51C0D21A70037DBB6 /* UnityAds.framework in Frameworks */,
+				1F69FD4F1D87723400157FF1 /* UnityAds.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,17 +119,8 @@
 		1F6D31261BFABA65002702D5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1FBFD7A21C0D21A70037DBB6 /* UnityAds.bundle */,
-				1FBFD7A31C0D21A70037DBB6 /* UnityAds.framework */,
-				1F6D31201BFAB9C8002702D5 /* CoreMedia.framework */,
-				1F6D311E1BFAB96F002702D5 /* CoreFoundation.framework */,
-				1F6D311B1BFAB8EF002702D5 /* CoreTelephony.framework */,
-				1F6D31191BFAB8D4002702D5 /* AVFoundation.framework */,
-				1F6D31171BFAB8B8002702D5 /* CFNetwork.framework */,
+				1F69FD4E1D87723400157FF1 /* UnityAds.framework */,
 				1F6D31221BFAB9F4002702D5 /* SpriteKit.framework */,
-				1F6D31241BFABA1F002702D5 /* SystemConfiguration.framework */,
-				1F6D31131BFAB885002702D5 /* StoreKit.framework */,
-				1F6D31151BFAB88C002702D5 /* AdSupport.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -168,7 +150,6 @@
 				1FE2BDD31BE7E4DF0063D636 /* SpaceScene.swift */,
 				1F2EF37C1C038C7F0043A2E1 /* PlanetScene.swift */,
 				1FE2BDD51BE7E4DF0063D636 /* GameViewController.swift */,
-				1F6D31121BFAB61C002702D5 /* UnityAds-Bridging-Header.h */,
 				1FE2BDD71BE7E4DF0063D636 /* Main.storyboard */,
 				1FE2BDDA1BE7E4DF0063D636 /* Assets.xcassets */,
 				1FE2BDDC1BE7E4DF0063D636 /* LaunchScreen.storyboard */,
@@ -187,6 +168,7 @@
 				1FE2BDC81BE7E4DF0063D636 /* Sources */,
 				1FE2BDC91BE7E4DF0063D636 /* Frameworks */,
 				1FE2BDCA1BE7E4DF0063D636 /* Resources */,
+				1F69FD531D8775F400157FF1 /* Embed Files */,
 			);
 			buildRules = (
 			);
@@ -235,7 +217,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1FBFD7A41C0D21A70037DBB6 /* UnityAds.bundle in Resources */,
+				1F69FD501D87724700157FF1 /* UnityAds.framework in Resources */,
 				1F27BC9F1C0CDE9000C0CBC7 /* gatherbutton.png in Resources */,
 				1F27BC9D1C0CDE9000C0CBC7 /* console.png in Resources */,
 				1FA646C31C80E1930043C3BB /* SpaceAdsSpash.png in Resources */,
@@ -395,7 +377,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_INCLUDE_PATHS = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "SpaceAdsSwift/UnityAds-Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -417,7 +398,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_INCLUDE_PATHS = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "SpaceAdsSwift/UnityAds-Bridging-Header.h";
 			};
 			name = Release;
 		};

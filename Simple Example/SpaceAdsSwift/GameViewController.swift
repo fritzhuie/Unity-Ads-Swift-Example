@@ -16,7 +16,7 @@ class GameViewController: UIViewController, UnityAdsDelegate {
         //initialize Unity Ads
         UnityAds.sharedInstance().delegate = self
         UnityAds.sharedInstance().setTestMode(true)
-        UnityAds.sharedInstance().startWithGameId("1003843", andViewController: self)
+        UnityAds.sharedInstance().startWithGameId("84187", andViewController: self)
         
         //Load SpriteKit scene
         let scene = SpaceScene(size: view.bounds.size)

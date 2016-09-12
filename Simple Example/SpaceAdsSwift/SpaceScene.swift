@@ -15,7 +15,7 @@ class SpaceScene: SKScene {
     func UnityAdsPlayVideo() {
         //Play a video ad
         let vc = self.view!.window!.rootViewController as! GameViewController
-        vc.playAd("video", sender: self)
+        vc.playAd("defaultZone", sender: self)
     }
     
     override func didMoveToView(view: SKView) {

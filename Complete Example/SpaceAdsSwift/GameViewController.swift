@@ -7,6 +7,7 @@
 
 import UIKit
 import SpriteKit
+import UnityAds
 
 class GameViewController: UIViewController, UnityAdsDelegate {
 
@@ -22,9 +23,7 @@ class GameViewController: UIViewController, UnityAdsDelegate {
         super.viewDidLoad()
         
         //initialize Unity Ads
-        UnityAds.sharedInstance().delegate = self
-        UnityAds.sharedInstance().setTestMode(true)
-        UnityAds.sharedInstance().startWithGameId("1003843", andViewController: self)
+        UnityAds.initialize("1003843", delegate: self)
         
         spaceScene = SpaceScene(size: view.bounds.size)
         planetScene = PlanetScene(size: view.bounds.size)
@@ -35,26 +34,34 @@ class GameViewController: UIViewController, UnityAdsDelegate {
     func playAd(placement: String, sender: SKScene) {
         scene = sender
         playerIsWatchingRewardedVideo = (placement == "rewardedVideo")
-        UnityAds.sharedInstance().setZone(placement)
-        if (UnityAds.sharedInstance().canShowZone(placement)) {
-            UnityAds.sharedInstance().show()
+        if (UnityAds.isReady(placement)){
+            UnityAds.show(self, placementId: placement)
         }else{
             print("Ads are not ready for placement `\(placement)`")
         }
-    }   
+    }
     
-    func unityAdsVideoCompleted(rewardItemKey: String!, skipped: Bool) {
-        //Unity Ads Callback - Called when ad finishes
-        if (!skipped && playerIsWatchingRewardedVideo) {
-            if scene.respondsToSelector("UnityAdsGetReward") {
-                let currentScene = scene as! PlanetScene
-                currentScene.UnityAdsGetReward()
-            } else {
-                print("selector 'UnityAdsGetReward' not available for scene \(scene)")
-            }
-        }
-        playerIsWatchingRewardedVideo = false
+    func unityAdsReady(placementId: String) {
         
+    }
+    
+    func unityAdsDidStart(placementId: String) {
+        
+    }
+    
+    func unityAdsDidError(error: UnityAdsError, withMessage message: String) {
+        
+    }
+    
+    func unityAdsDidFinish(placementId: String, withFinishState state: UnityAdsFinishState) {
+        if !scene.respondsToSelector(Selector("UnityAdsGetReward")){
+            print("selector 'UnityAdsGetReward' not available for scene \(scene)")
+        }else if (state != .Skipped && playerIsWatchingRewardedVideo) {
+            let currentScene = scene as! PlanetScene
+            currentScene.UnityAdsGetReward()
+        }
+        
+        playerIsWatchingRewardedVideo = false
         launchSpriteKitScene(scene)
     }
     
