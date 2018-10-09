@@ -46,16 +46,16 @@ class PlanetScene : SKScene {
     var crosshairsCalled = false
     var touchEnabled = true
     
-    override func didMoveToView(view: SKView) {
+    override func didMove(to view: SKView) {
         if(self.children.count == 0) {
             initializeScene()
         }
     }
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first! as UITouch
-        let touchLocation = touch.locationInNode(rootNode)
-        let touchedNodes = rootNode.nodesAtPoint(touchLocation)
+        let touchLocation = touch.location(in: rootNode)
+        let touchedNodes = rootNode.nodes(at: touchLocation)
         
         if (touchEnabled == false) {
             return
@@ -69,7 +69,7 @@ class PlanetScene : SKScene {
                 UnityAdsPlayRewardedVideo()
                 return
             }else if(node.name == "gather"){
-                addFuel(random()%4 + 2)
+                addFuel(Int(arc4random())%4 + 2)
                 return
             }else if(node.name == "crosshairs"){
                 drainFuel()
@@ -83,24 +83,24 @@ class PlanetScene : SKScene {
         addChild(rootNode)
         
         rewardedAdButton.name = "rewardedAdButton"
-        rewardedAdButton.position = CGPointMake(self.frame.midX + 35, self.frame.midY - 115)
-        rewardedAdButton.size = CGSizeMake(200, 100)
+        rewardedAdButton.position = CGPoint(x: self.frame.midX + 35, y: self.frame.midY - 115)
+        rewardedAdButton.size = CGSize(width: 200, height: 100)
         rewardedAdButton.zPosition = 3
         rootNode.addChild(rewardedAdButton)
         
         gatherButton.name = "gather"
-        gatherButton.position = CGPointMake(self.frame.midX - 180, self.frame.midY - 115)
-        gatherButton.size = CGSizeMake(200, 100)
+        gatherButton.position = CGPoint(x: self.frame.midX - 180, y: self.frame.midY - 115)
+        gatherButton.size = CGSize(width: 200, height: 100)
         gatherButton.zPosition = 3
         rootNode.addChild(gatherButton)
         
-        background.position = CGPointMake(self.frame.midX, self.frame.midY - 200)
+        background.position = CGPoint(x: self.frame.midX, y: self.frame.midY - 200)
         background.size.height = self.frame.height + 400
         background.size.width = background.size.height * (2560/1600) //2560×1600 pixels
         background.zPosition = 0
         rootNode.addChild(background)
         
-        fuelIcon.position = CGPointMake(self.frame.midX + 190, self.frame.midY - 120)
+        fuelIcon.position = CGPoint(x: self.frame.midX + 190, y: self.frame.midY - 120)
         fuelIcon.size.height = 50
         fuelIcon.alpha = 0.6
         fuelIcon.size.width = 42
@@ -110,7 +110,7 @@ class PlanetScene : SKScene {
         fuelPercentage.fontColor = SKColor(colorLiteralRed: 0, green: 144, blue: 255, alpha: 50)
         fuelPercentage.fontSize = 30
         fuelPercentage.fontName = "arial"
-        fuelPercentage.position = CGPointMake(self.frame.midX + 235, self.frame.midY - 120 - fuelPercentage.fontSize/2)
+        fuelPercentage.position = CGPoint(x: self.frame.midX + 235, y: self.frame.midY - 120 - fuelPercentage.fontSize/2)
         fuelPercentage.zPosition = 3
         fuelPercentage.text = "\(fuel)%"
         rootNode.addChild(fuelPercentage)
@@ -122,32 +122,32 @@ class PlanetScene : SKScene {
         console.zPosition = 4
         rootNode.addChild(console)
         
-        frost.position = CGPointMake(self.frame.midX, self.frame.midY)
+        frost.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
         frost.size.width = self.frame.size.width
         frost.size.height = (background.size.width * (1600/2560)) //2560 × 1600 pixels
         frost.zPosition = 2
         rootNode.addChild(frost)
-        let defrost = SKAction.sequence([SKAction.waitForDuration(4), SKAction.fadeAlphaTo(0.0, duration: 2)])
-        frost.runAction(defrost)
+        let defrost = SKAction.sequence([SKAction.wait(forDuration: 4), SKAction.fadeAlpha(to: 0.0, duration: 2)])
+        frost.run(defrost)
         
         let fadeIn = SKShapeNode(rect: self.frame)
-        fadeIn.fillColor = SKColor.whiteColor()
+        fadeIn.fillColor = SKColor.white
         fadeIn.zPosition = 1
         rootNode.addChild(fadeIn)
-        let fade = SKAction.fadeAlphaTo(0.0, duration: 1.0)
-        fadeIn.runAction(fade)
+        let fade = SKAction.fadeAlpha(to: 0.0, duration: 1.0)
+        fadeIn.run(fade)
         
-        gatherButton.hidden = true
+        gatherButton.isHidden = true
         reveal(gatherButton, delay: 4.0)
         
-        rewardedAdButton.hidden = true
+        rewardedAdButton.isHidden = true
         reveal(rewardedAdButton, delay: 4.2)
         
-        fuelIcon.hidden = true
+        fuelIcon.isHidden = true
         reveal(fuelIcon, delay: 4.4)
         
         fuelPercentage.setScale(0.1)
-        fuelPercentage.runAction(SKAction.sequence([SKAction.waitForDuration(4.6), SKAction.scaleTo(1.0, duration: 0.2)]))
+        fuelPercentage.run(SKAction.sequence([SKAction.wait(forDuration: 4.6), SKAction.scale(to: 1.0, duration: 0.2)]))
         
         snowflakes.position = self.frame.origin
         snowflakes.zPosition = 2
@@ -164,13 +164,13 @@ class PlanetScene : SKScene {
         touchEnabled = false
     }
     
-    func hide(node: SKSpriteNode) {
-        node.runAction(SKAction.sequence([SKAction.scaleYTo(0.1, duration: 0.1), SKAction.hide()]))
+    func hide(_ node: SKSpriteNode) {
+        node.run(SKAction.sequence([SKAction.scaleY(to: 0.1, duration: 0.1), SKAction.hide()]))
     }
     
-    func reveal(node: SKSpriteNode, delay: Double) {
+    func reveal(_ node: SKSpriteNode, delay: Double) {
         node.yScale = 0.01
-        node.runAction(SKAction.sequence([SKAction.waitForDuration(delay), SKAction.runBlock({node.hidden = false}), SKAction.scaleYTo(1, duration: 0.1)]))
+        node.run(SKAction.sequence([SKAction.wait(forDuration: delay), SKAction.run({node.isHidden = false}), SKAction.scaleY(to: 1, duration: 0.1)]))
     }
     
     func addCrosshairs() {
@@ -179,17 +179,17 @@ class PlanetScene : SKScene {
         crosshairs.alpha = 0.7
         crosshairs.zPosition = 2
         crosshairs.setScale(5)
-        crosshairs.position = CGPointMake(self.frame.midX - 80, self.frame.midY + 120)
+        crosshairs.position = CGPoint(x: self.frame.midX - 80, y: self.frame.midY + 120)
         crosshairs.name = "crosshairs"
         rootNode.addChild(crosshairs)
-        let zoom = SKAction.scaleTo(1, duration: 0.5)
-        crosshairs.runAction(SKAction.sequence([SKAction.performSelector("disableTouch", onTarget: self), zoom, SKAction.performSelector("enableTouch", onTarget: self)]))
-        let rotate = SKAction.repeatActionForever(SKAction.rotateByAngle(2*3.1415926, duration: 3))
-        crosshairs.runAction(rotate)
+        let zoom = SKAction.scale(to: 1, duration: 0.5)
+        crosshairs.run(SKAction.sequence([SKAction.perform(#selector(PlanetScene.disableTouch), onTarget: self), zoom, SKAction.perform(#selector(PlanetScene.enableTouch), onTarget: self)]))
+        let rotate = SKAction.repeatForever(SKAction.rotate(byAngle: 2*3.1415926, duration: 3))
+        crosshairs.run(rotate)
         crosshairsCalled = true
     }
 
-    override func update(currentTime: CFTimeInterval) {
+    override func update(_ currentTime: TimeInterval) {
         updateLandingAnimation()
         updateSnowFlakes()
     }
@@ -198,15 +198,15 @@ class PlanetScene : SKScene {
 
         func addSnowflake() {
             let s = Snowflake(circleOfRadius: 2.0)
-            s.fillColor = SKColor.whiteColor()
-            s.position = CGPointMake(CGFloat(random()%Int(self.frame.maxX)), CGFloat(random()%Int(self.frame.maxY)))
-            s.velocity = random()%8
-            s.momentum = CGVectorMake(0, 0)
+            s.fillColor = SKColor.white
+            s.position = CGPoint(x: CGFloat(Int(arc4random())%Int(self.frame.maxX)), y: CGFloat(Int(arc4random())%Int(self.frame.maxY)))
+            s.velocity = Int(arc4random())%8
+            s.momentum = CGVector(dx: 0, dy: 0)
             s.setScale(0.1 * CGFloat(s.velocity))
             if(s.velocity < 3) {
-                s.fillColor = SKColor.darkGrayColor()
+                s.fillColor = SKColor.darkGray
             }else if (s.velocity < 6) {
-                s.fillColor = SKColor.lightGrayColor()
+                s.fillColor = SKColor.lightGray
             }
             
             snowflakes.addChild(s)
@@ -220,21 +220,21 @@ class PlanetScene : SKScene {
         for snowflake in snowflakes.children {
             let s = snowflake as! Snowflake
             
-            s.momentum.dx = clampf((s.momentum.dx + CGFloat(random()%3) - 1), min: 0, max: 3)
-            s.momentum.dy = clampf((s.momentum.dy + CGFloat(random()%3) - 1), min: 0, max: 1)
+            s.momentum.dx = clampf((s.momentum.dx + CGFloat(Int(arc4random())%3) - 1), min: 0, max: 3)
+            s.momentum.dy = clampf((s.momentum.dy + CGFloat(Int(arc4random())%3) - 1), min: 0, max: 1)
             
             s.position.x = s.position.x - s.momentum.dx
             s.position.y = s.position.y - CGFloat(s.velocity) - s.momentum.dy
             s.position.y = s.position.y + (self.frame.midY - background.position.y)
             if ( s.position.x < 1) {
                 s.position.x = self.frame.maxX
-                s.position.y = CGFloat(random()%Int(self.frame.maxY))
+                s.position.y = CGFloat(Int(arc4random())%Int(self.frame.maxY))
             }
             if ( s.position.y < 1) {
                 s.position.y = self.frame.maxY
             }
             if ( s.position.y > self.frame.maxY) {
-                s.position.y = CGFloat(random()%Int(self.frame.maxY))
+                s.position.y = CGFloat(Int(arc4random())%Int(self.frame.maxY))
             }
         }
     }
@@ -243,7 +243,7 @@ class PlanetScene : SKScene {
         let offset = self.frame.midY - background.position.y
         background.position.y = (background.position.y) + offset/35.0
         if(offset > 31) {
-            let jitter = CGFloat(random() % Int(offset - 30))
+            let jitter = CGFloat(Int(arc4random()) % Int(offset - 30))
             background.position.x = self.frame.midX + jitter
         }
         if (offset > 10) {
@@ -252,26 +252,26 @@ class PlanetScene : SKScene {
     }
 
     func gotoSpace () {
-        crosshairs.hidden = true
-        let wait = SKAction.waitForDuration(1)
+        crosshairs.isHidden = true
+        let wait = SKAction.wait(forDuration: 1)
         
         let fadeOut = SKShapeNode(rect: self.frame)
-        fadeOut.fillColor = SKColor.blackColor()
+        fadeOut.fillColor = SKColor.black
         fadeOut.zPosition = 3
         fadeOut.alpha = 0.0
         rootNode.addChild(fadeOut)
-        let fade = SKAction.fadeAlphaTo(1, duration: 2.0)
-        let liftoff = SKAction.sequence([SKAction.moveBy(CGVectorMake(0, -400), duration: 1), SKAction.moveBy(CGVectorMake(0, -4000), duration: 2)])
-        let takeoff = SKAction.sequence([wait, SKAction.scaleBy(10, duration: 2)])
-        let transition = SKAction.performSelector("loadSpaceScene", onTarget: self)
-        background.runAction(liftoff)
-        background.runAction(takeoff)
-        fadeOut.runAction(SKAction.sequence([wait, fade, transition]))
+        let fade = SKAction.fadeAlpha(to: 1, duration: 2.0)
+        let liftoff = SKAction.sequence([SKAction.move(by: CGVector(dx: 0, dy: -400), duration: 1), SKAction.move(by: CGVector(dx: 0, dy: -4000), duration: 2)])
+        let takeoff = SKAction.sequence([wait, SKAction.scale(by: 10, duration: 2)])
+        let transition = SKAction.perform(#selector(PlanetScene.loadSpaceScene), onTarget: self)
+        background.run(liftoff)
+        background.run(takeoff)
+        fadeOut.run(SKAction.sequence([wait, fade, transition]))
     }
     
     func loadSpaceScene() {
         let nextScene = SpaceScene(size: scene!.size)
-        nextScene.scaleMode = .AspectFill
+        nextScene.scaleMode = .aspectFill
         scene?.view?.presentScene(nextScene)
     }
     
@@ -284,22 +284,22 @@ class PlanetScene : SKScene {
         var fuelActionValue : Int = displayedFuel
         
         while ( fuelActionValue > fuel) {
-            fuelActionValue--
+            fuelActionValue -= 1
             let fuelDisplayValue: Int = fuelActionValue
-            fuelSequence.append(SKAction.runBlock({
+            fuelSequence.append(SKAction.run({
                 self.fuelPercentage.text = "\(fuelDisplayValue)%"
                 print(fuelDisplayValue)
                 self.displayedFuel = fuelDisplayValue
                 self.updatefuelIcon()
             }))
-            fuelSequence.append(SKAction.waitForDuration(0.03))
+            fuelSequence.append(SKAction.wait(forDuration: 0.03))
         }
         
-        fuelPercentage.runAction(SKAction.sequence(fuelSequence))
+        fuelPercentage.run(SKAction.sequence(fuelSequence))
         
     }
     
-    func addFuel(count: Int) {
+    func addFuel(_ count: Int) {
 
         //you can use this example to pass values from the View Controller to your scene
         
@@ -313,18 +313,18 @@ class PlanetScene : SKScene {
         var fuelActionValue : Int = displayedFuel
         
         while ( fuelActionValue < fuel) {
-            fuelActionValue++
+            fuelActionValue += 1
             let fuelDisplayValue: Int = fuelActionValue
-            fuelSequence.append(SKAction.runBlock({
+            fuelSequence.append(SKAction.run({
                 self.fuelPercentage.text = "\(fuelDisplayValue)%"
                 self.displayedFuel = fuelDisplayValue
                 self.updatefuelIcon()
             }))
             let delay = 0.5 / (3 + Double(self.fuel) - Double(displayedFuel))
-            fuelSequence.append(SKAction.waitForDuration(delay))
+            fuelSequence.append(SKAction.wait(forDuration: delay))
         }
         
-        fuelPercentage.runAction(SKAction.sequence(fuelSequence))
+        fuelPercentage.run(SKAction.sequence(fuelSequence))
     }
     
     func updatefuelIcon() {
@@ -343,11 +343,11 @@ class PlanetScene : SKScene {
         }
     }
     
-    func max (n: CGFloat, max: CGFloat)->CGFloat {
+    func max (_ n: CGFloat, max: CGFloat)->CGFloat {
         return n > max ? max : n
     }
     
-    func clampf(n: CGFloat, min: CGFloat, max: CGFloat)->CGFloat {
+    func clampf(_ n: CGFloat, min: CGFloat, max: CGFloat)->CGFloat {
         if(n < min){return min}else if(n > max){return max}else{return n}
     }
 }

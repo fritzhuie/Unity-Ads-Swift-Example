@@ -21,8 +21,8 @@ class SpaceScene: SKScene {
     
     //******************************************************/
     
-    override func didMoveToView(view: SKView) {
-        self.backgroundColor = SKColor.blackColor()
+    override func didMove(to view: SKView) {
+        self.backgroundColor = SKColor.black
         if(self.children.count == 0) {
             self.constructScene()
         }else{
@@ -30,10 +30,10 @@ class SpaceScene: SKScene {
         }
     }
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first! as UITouch
-        let touchLocation = touch.locationInNode(rootNode)
-        let touchedNodes = rootNode.nodesAtPoint(touchLocation)
+        let touchLocation = touch.location(in: rootNode)
+        let touchedNodes = rootNode.nodes(at: touchLocation)
         
         for node in touchedNodes {
             
@@ -61,12 +61,12 @@ class SpaceScene: SKScene {
     
     func resetScene() {
         planet.name = "planet"
-        planet.position = CGPointMake(self.frame.midX + 200, self.frame.midY - 20)
+        planet.position = CGPoint(x: self.frame.midX + 200, y: self.frame.midY - 20)
         planet.size.height = 300
         planet.size.width = 300
         planet.zPosition = 0
-        let planetMovement = SKAction.moveBy(CGVector(dx: -200, dy: 0), duration: 100)
-        planet.runAction(planetMovement)
+        let planetMovement = SKAction.move(by: CGVector(dx: -200, dy: 0), duration: 100)
+        planet.run(planetMovement)
         
         fuelIcon.texture = SKTexture(imageNamed: "battery25.png")
     }
@@ -81,22 +81,22 @@ class SpaceScene: SKScene {
         console.zPosition = 3
         rootNode.addChild(console)
         
-        background.position = CGPointMake(self.frame.midX, self.frame.midY)
+        background.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
         background.size.width = self.frame.size.width + 100
         background.size.height = (background.size.width * (1035/1365))
         background.zPosition = -1
         rootNode.addChild(background)
         
-        fuelIcon.position = CGPointMake(self.frame.midX + 190, self.frame.midY - 120)
+        fuelIcon.position = CGPoint(x: self.frame.midX + 190, y: self.frame.midY - 120)
         fuelIcon.size.height = 50
         fuelIcon.alpha = 0.6
         fuelIcon.size.width = 42
         if (deviceIsAniPad) {
-            fuelIcon.position = CGPointMake(self.frame.midX + 200, self.frame.midY - 250)
+            fuelIcon.position = CGPoint(x: self.frame.midX + 200, y: self.frame.midY - 250)
             fuelIcon.size.width*=1.5
             fuelIcon.size.height*=1.5
         }else{
-            fuelIcon.position = CGPointMake(self.frame.midX + 190, self.frame.midY - 120)
+            fuelIcon.position = CGPoint(x: self.frame.midX + 190, y: self.frame.midY - 120)
         }
         fuelIcon.zPosition = 3
         rootNode.addChild(fuelIcon)
@@ -104,7 +104,7 @@ class SpaceScene: SKScene {
         fuelPercentage.fontColor = SKColor(colorLiteralRed: 0, green: 144, blue: 255, alpha: 50)
         fuelPercentage.fontSize = 30
         fuelPercentage.fontName = "arial"
-        fuelPercentage.position = CGPointMake(self.frame.midX + 235, self.frame.midY - 120 - fuelPercentage.fontSize/2)
+        fuelPercentage.position = CGPoint(x: self.frame.midX + 235, y: self.frame.midY - 120 - fuelPercentage.fontSize/2)
         fuelPercentage.zPosition = 3
         fuelPercentage.text = "\(fuel)%"
         rootNode.addChild(fuelPercentage)
@@ -114,58 +114,58 @@ class SpaceScene: SKScene {
         adButton.zPosition = 4
         adButton.size = buttonSize
         if (deviceIsAniPad) {
-            adButton.position = CGPointMake(self.frame.midX - 300, self.frame.midY - 250)
+            adButton.position = CGPoint(x: self.frame.midX - 300, y: self.frame.midY - 250)
             adButton.size.height*=1.5
             adButton.size.width*=1.5
         }else{
-            adButton.position = CGPointMake(self.frame.midX - 180, self.frame.midY - 120)
+            adButton.position = CGPoint(x: self.frame.midX - 180, y: self.frame.midY - 120)
         }
         rootNode.addChild(adButton)
         
         searchButton.name = "search"
-        searchButton.position = CGPointMake(self.frame.midX + 35, self.frame.midY - 120)
+        searchButton.position = CGPoint(x: self.frame.midX + 35, y: self.frame.midY - 120)
         searchButton.size = buttonSize
         searchButton.zPosition = 4
         rootNode.addChild(searchButton)
         
         rootNode.addChild(tapArrow)
         tapArrow.zPosition = 5
-        tapArrow.size = CGSizeMake(64, 64)
-        tapArrow.position = CGPointMake(searchButton.position.x, searchButton.position.y + 75)
+        tapArrow.size = CGSize(width: 64, height: 64)
+        tapArrow.position = CGPoint(x: searchButton.position.x, y: searchButton.position.y + 75)
         
         rootNode.addChild(planet)
         planet.name = "planet"
-        planet.position = CGPointMake(self.frame.midX + 200, self.frame.midY - 20)
+        planet.position = CGPoint(x: self.frame.midX + 200, y: self.frame.midY - 20)
         planet.size.height = 300
         planet.size.width = 300
         planet.zPosition = 0
-        let planetMovement = SKAction.moveBy(CGVector(dx: -300, dy: 0), duration: 100)
-        planet.runAction(planetMovement)
+        let planetMovement = SKAction.move(by: CGVector(dx: -300, dy: 0), duration: 100)
+        planet.run(planetMovement)
         
         
         let fadeIn = SKShapeNode(rect: self.frame)
-        fadeIn.fillColor = SKColor.blackColor()
+        fadeIn.fillColor = SKColor.black
         fadeIn.alpha = 1.0
         fadeIn.zPosition = 3
         rootNode.addChild(fadeIn)
-        let fade = SKAction.fadeAlphaTo(0.0, duration: 1.0)
-        fadeIn.runAction(fade)
+        let fade = SKAction.fadeAlpha(to: 0.0, duration: 1.0)
+        fadeIn.run(fade)
         
-        tapArrow.hidden = true
+        tapArrow.isHidden = true
         reveal(tapArrow, delay: 3.0)
         startBouncing(tapArrow, distance: 30.0, delay: 3.0)
         
-        adButton.hidden = true
+        adButton.isHidden = true
         reveal(adButton, delay: 2.0)
         
-        searchButton.hidden = true
+        searchButton.isHidden = true
         reveal(searchButton, delay: 2.2)
         
-        fuelIcon.hidden = true
+        fuelIcon.isHidden = true
         reveal(fuelIcon, delay: 2.4)
         
         fuelPercentage.setScale(0.1)
-        fuelPercentage.runAction(SKAction.sequence([SKAction.waitForDuration(2.6), SKAction.scaleTo(1.0, duration: 0.2)]))
+        fuelPercentage.run(SKAction.sequence([SKAction.wait(forDuration: 2.6), SKAction.scale(to: 1.0, duration: 0.2)]))
         
         
         starTravelNodes.position = self.frame.origin
@@ -182,48 +182,48 @@ class SpaceScene: SKScene {
         crosshairs.setScale(5)
         crosshairs.name = "crosshairs"
         rootNode.addChild(crosshairs)
-        let zoom = SKAction.scaleTo(1, duration: 0.5)
-        crosshairs.runAction(zoom)
-        let rotate = SKAction.repeatActionForever(SKAction.rotateByAngle(2*3.1415926, duration: 3))
-        crosshairs.runAction(rotate)
+        let zoom = SKAction.scale(to: 1, duration: 0.5)
+        crosshairs.run(zoom)
+        let rotate = SKAction.repeatForever(SKAction.rotate(byAngle: 2*3.1415926, duration: 3))
+        crosshairs.run(rotate)
         crosshairsCalled = true
     }
     
     func landOnPlanet () {
         
-        fuelPercentage.hidden = true
-        starTravelNodes.hidden = true
-        crosshairs.hidden = true
-        fuelIcon.hidden = true
-        searchButton.hidden = true
-        adButton.hidden = true
+        fuelPercentage.isHidden = true
+        starTravelNodes.isHidden = true
+        crosshairs.isHidden = true
+        fuelIcon.isHidden = true
+        searchButton.isHidden = true
+        adButton.isHidden = true
         
-        let dive = SKAction.moveTo(CGPointMake(self.frame.midX + 300, self.frame.midY - 300), duration: 1)
-        let dive2 = SKAction.scaleTo(10, duration: 1)
-        planet.runAction(dive)
-        planet.runAction(dive2)
+        let dive = SKAction.move(to: CGPoint(x: self.frame.midX + 300, y: self.frame.midY - 300), duration: 1)
+        let dive2 = SKAction.scale(to: 10, duration: 1)
+        planet.run(dive)
+        planet.run(dive2)
         
         let fadeOut = SKShapeNode(rect: self.frame)
-        fadeOut.fillColor = SKColor.whiteColor()
+        fadeOut.fillColor = SKColor.white
         fadeOut.zPosition = 2
         fadeOut.name = "fade"
         fadeOut.alpha = 0.0
         rootNode.addChild(fadeOut)
-        let fade = SKAction.fadeInWithDuration(1)
-        let transition = SKAction.performSelector("transition", onTarget: self)
-        fadeOut.runAction(SKAction.sequence([fade, transition]))
+        let fade = SKAction.fadeIn(withDuration: 1)
+        let transition = SKAction.perform(#selector(SpaceScene.transition), onTarget: self)
+        fadeOut.run(SKAction.sequence([fade, transition]))
     }
     
     func transition () {
-        rootNode.childNodeWithName("fade")?.removeFromParent()
+        rootNode.childNode(withName: "fade")?.removeFromParent()
         let nextScene = PlanetScene(size: scene!.size)
-        nextScene.scaleMode = .AspectFill
+        nextScene.scaleMode = .aspectFill
         scene?.view?.presentScene(nextScene)
     }
    
-    override func update(currentTime: CFTimeInterval) {
+    override func update(_ currentTime: TimeInterval) {
         self.updateParalaxStarscape()
-        crosshairs.position = CGPointMake(planet.position.x - 30, planet.position.y + 30)
+        crosshairs.position = CGPoint(x: planet.position.x - 30, y: planet.position.y + 30)
     }
     
     func generateParalaxStarscape () {
@@ -231,14 +231,14 @@ class SpaceScene: SKScene {
         func addStar() {
             
             let star = SKStarNode(circleOfRadius: 2.0)
-            star.fillColor = SKColor.whiteColor()
-            star.position = CGPointMake(CGFloat(random()%Int(self.frame.maxX)), CGFloat(random()%Int(self.frame.maxY)))
-            star.velocity = random()%10
+            star.fillColor = SKColor.white
+            star.position = CGPoint(x: CGFloat(Int(arc4random())%Int(self.frame.maxX)), y: CGFloat(Int(arc4random())%Int(self.frame.maxY)))
+            star.velocity = Int(arc4random())%10
             star.setScale(0.1 * CGFloat(star.velocity))
             if(star.velocity < 3){
-                star.fillColor = SKColor.darkGrayColor()
+                star.fillColor = SKColor.darkGray
             }else if (star.velocity < 6) {
-                star.fillColor = SKColor.lightGrayColor()
+                star.fillColor = SKColor.lightGray
             }
             
             starTravelNodes.addChild(star)
@@ -254,28 +254,28 @@ class SpaceScene: SKScene {
             star.position.x = star.position.x - CGFloat(star.velocity)
             if ( star.position.x < 1) {
                 star.position.x = self.frame.maxX
-                star.position.y = CGFloat(random()%Int(self.frame.maxY))
+                star.position.y = CGFloat(Int(arc4random())%Int(self.frame.maxY))
             }
         }
     }
 
-    func hide(node: SKSpriteNode) {
+    func hide(_ node: SKSpriteNode) {
         node.removeAllActions()
-        node.runAction(SKAction.sequence([SKAction.scaleYTo(0.1, duration: 0.1), SKAction.hide()]))
+        node.run(SKAction.sequence([SKAction.scaleY(to: 0.1, duration: 0.1), SKAction.hide()]))
     }
     
-    func reveal(node: SKSpriteNode, delay: Double) {
+    func reveal(_ node: SKSpriteNode, delay: Double) {
         node.yScale = 0.01
-        node.runAction(SKAction.sequence([SKAction.waitForDuration(delay), SKAction.runBlock({node.hidden = false}), SKAction.scaleYTo(1, duration: 0.1)]))
+        node.run(SKAction.sequence([SKAction.wait(forDuration: delay), SKAction.run({node.isHidden = false}), SKAction.scaleY(to: 1, duration: 0.1)]))
     }
     
-    func startBouncing(node: SKSpriteNode, distance: CGFloat, delay: Double){
+    func startBouncing(_ node: SKSpriteNode, distance: CGFloat, delay: Double){
         let ratios : [CGFloat] = [0.4, 0.3, 0.2, 0.1, 0.0, -0.1, -0.2, -0.3, -0.4]
         var sequence = [SKAction]()
         for i in ratios {
-            sequence.append(SKAction.moveBy(CGVectorMake(0,(distance * i)), duration: 0.1))
+            sequence.append(SKAction.move(by: CGVector(dx: 0,dy: (distance * i)), duration: 0.1))
         }
-        node.runAction(SKAction.repeatActionForever(SKAction.sequence(sequence)))
+        node.run(SKAction.repeatForever(SKAction.sequence(sequence)))
         print(sequence.count)
     }
     
@@ -293,8 +293,8 @@ class SpaceScene: SKScene {
     let searchButton = SKSpriteNode(imageNamed: "locatefuelbutton.png")
     let adButton = SKSpriteNode(imageNamed: "playadbutton.png")
     let tapArrow = SKSpriteNode(imageNamed: "arrow.png")
-    let buttonSize = CGSizeMake(200, 100)
-    var deviceIsAniPad: Bool = UIDevice.currentDevice().userInterfaceIdiom == .Pad
+    let buttonSize = CGSize(width: 200, height: 100)
+    var deviceIsAniPad: Bool = UIDevice.current.userInterfaceIdiom == .pad
 }
 
 

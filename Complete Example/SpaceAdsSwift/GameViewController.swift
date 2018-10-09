@@ -23,7 +23,7 @@ class GameViewController: UIViewController, UnityAdsDelegate {
         super.viewDidLoad()
         
         //initialize Unity Ads
-        UnityAds.initialize("1003843", delegate: self)
+        UnityAds.initialize("20721", delegate: self)
         
         spaceScene = SpaceScene(size: view.bounds.size)
         planetScene = PlanetScene(size: view.bounds.size)
@@ -31,7 +31,7 @@ class GameViewController: UIViewController, UnityAdsDelegate {
         launchSpriteKitScene(scene)
     }
     
-    func playAd(placement: String, sender: SKScene) {
+    func playAd(_ placement: String, sender: SKScene) {
         scene = sender
         playerIsWatchingRewardedVideo = (placement == "rewardedVideo")
         if (UnityAds.isReady(placement)){
@@ -41,22 +41,22 @@ class GameViewController: UIViewController, UnityAdsDelegate {
         }
     }
     
-    func unityAdsReady(placementId: String) {
+    func unityAdsReady(_ placementId: String) {
         
     }
     
-    func unityAdsDidStart(placementId: String) {
+    func unityAdsDidStart(_ placementId: String) {
         
     }
     
-    func unityAdsDidError(error: UnityAdsError, withMessage message: String) {
+    func unityAdsDidError(_ error: UnityAdsError, withMessage message: String) {
         
     }
     
-    func unityAdsDidFinish(placementId: String, withFinishState state: UnityAdsFinishState) {
-        if !scene.respondsToSelector(Selector("UnityAdsGetReward")){
+    func unityAdsDidFinish(_ placementId: String, with state: UnityAdsFinishState) {
+        if !scene.responds(to: Selector("UnityAdsGetReward")){
             print("selector 'UnityAdsGetReward' not available for scene \(scene)")
-        }else if (state != .Skipped && playerIsWatchingRewardedVideo) {
+        }else if (state != .skipped && playerIsWatchingRewardedVideo) {
             let currentScene = scene as! PlanetScene
             currentScene.UnityAdsGetReward()
         }
@@ -65,10 +65,10 @@ class GameViewController: UIViewController, UnityAdsDelegate {
         launchSpriteKitScene(scene)
     }
     
-    func launchSpriteKitScene(scene: SKScene) {
+    func launchSpriteKitScene(_ scene: SKScene) {
         let skView = view as! SKView
         skView.ignoresSiblingOrder = true
-        scene.scaleMode = .ResizeFill
+        scene.scaleMode = .resizeFill
         skView.presentScene(scene)
     }
 }
