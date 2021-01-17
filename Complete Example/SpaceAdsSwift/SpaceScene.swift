@@ -15,8 +15,7 @@ class SpaceScene: SKScene {
     //**** Play non-rewarded ad (5-second skip) *************/
     
     func UnityAdsPlayVideo() {
-        let vc = self.view!.window!.rootViewController as! GameViewController
-        vc.playAd("video", sender: self)
+
     }
     
     //******************************************************/
@@ -101,7 +100,7 @@ class SpaceScene: SKScene {
         fuelIcon.zPosition = 3
         rootNode.addChild(fuelIcon)
         
-        fuelPercentage.fontColor = SKColor(colorLiteralRed: 0, green: 144, blue: 255, alpha: 50)
+        fuelPercentage.fontColor = #colorLiteral(red: 0, green: 0.5647058824, blue: 1, alpha: 0.5)
         fuelPercentage.fontSize = 30
         fuelPercentage.fontName = "arial"
         fuelPercentage.position = CGPoint(x: self.frame.midX + 235, y: self.frame.midY - 120 - fuelPercentage.fontSize/2)
@@ -209,9 +208,8 @@ class SpaceScene: SKScene {
         fadeOut.name = "fade"
         fadeOut.alpha = 0.0
         rootNode.addChild(fadeOut)
-        let fade = SKAction.fadeIn(withDuration: 1)
-        let transition = SKAction.perform(#selector(SpaceScene.transition), onTarget: self)
-        fadeOut.run(SKAction.sequence([fade, transition]))
+        self.transition()
+
     }
     
     func transition () {

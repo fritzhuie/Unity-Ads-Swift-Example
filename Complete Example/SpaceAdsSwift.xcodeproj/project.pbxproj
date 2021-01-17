@@ -22,9 +22,7 @@
 		1F27BCA51C0CDE9000C0CBC7 /* stars.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1F27BC971C0CDE9000C0CBC7 /* stars.jpg */; };
 		1F27BCA61C0CDE9000C0CBC7 /* tricurser.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F27BC981C0CDE9000C0CBC7 /* tricurser.png */; };
 		1F2EF37D1C038C7F0043A2E1 /* PlanetScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2EF37C1C038C7F0043A2E1 /* PlanetScene.swift */; };
-		1F69FD4F1D87723400157FF1 /* UnityAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F69FD4E1D87723400157FF1 /* UnityAds.framework */; };
 		1F69FD501D87724700157FF1 /* UnityAds.framework in Resources */ = {isa = PBXBuildFile; fileRef = 1F69FD4E1D87723400157FF1 /* UnityAds.framework */; };
-		1F69FD541D87761100157FF1 /* UnityAds.framework in Embed Files */ = {isa = PBXBuildFile; fileRef = 1F69FD4E1D87723400157FF1 /* UnityAds.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1F6D31231BFAB9F4002702D5 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F6D31221BFAB9F4002702D5 /* SpriteKit.framework */; };
 		1F9794721C4EF19600D594A5 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F9794711C4EF19600D594A5 /* arrow.png */; };
 		1FA646C31C80E1930043C3BB /* SpaceAdsSpash.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FA646C21C80E1930043C3BB /* SpaceAdsSpash.png */; };
@@ -35,20 +33,6 @@
 		1FE2BDDB1BE7E4DF0063D636 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FE2BDDA1BE7E4DF0063D636 /* Assets.xcassets */; };
 		1FE2BDDE1BE7E4DF0063D636 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FE2BDDC1BE7E4DF0063D636 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		1F69FD531D8775F400157FF1 /* Embed Files */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				1F69FD541D87761100157FF1 /* UnityAds.framework in Embed Files */,
-			);
-			name = "Embed Files";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1F27BC8B1C0CDE9000C0CBC7 /* battery25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = battery25.png; path = Recources/battery25.png; sourceTree = "<group>"; };
@@ -86,7 +70,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F6D31231BFAB9F4002702D5 /* SpriteKit.framework in Frameworks */,
-				1F69FD4F1D87723400157FF1 /* UnityAds.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -168,7 +151,6 @@
 				1FE2BDC81BE7E4DF0063D636 /* Sources */,
 				1FE2BDC91BE7E4DF0063D636 /* Frameworks */,
 				1FE2BDCA1BE7E4DF0063D636 /* Resources */,
-				1F69FD531D8775F400157FF1 /* Embed Files */,
 			);
 			buildRules = (
 			);
@@ -185,19 +167,19 @@
 		1FE2BDC41BE7E4DF0063D636 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 1230;
 				ORGANIZATIONNAME = Unity;
 				TargetAttributes = {
 					1FE2BDCB1BE7E4DF0063D636 = {
 						CreatedOnToolsVersion = 7.0.1;
 						DevelopmentTeam = ZMVW3AW7K7;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 1230;
 					};
 				};
 			};
 			buildConfigurationList = 1FE2BDC71BE7E4DF0063D636 /* Build configuration list for PBXProject "SpaceAdsSwift" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
@@ -281,18 +263,28 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -315,7 +307,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -328,18 +320,28 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -356,7 +358,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -376,14 +378,14 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = SpaceAdsSwift/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = unity.SpaceAdsSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_INCLUDE_PATHS = "";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -398,14 +400,14 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = SpaceAdsSwift/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = unity.SpaceAdsSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_INCLUDE_PATHS = "";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};

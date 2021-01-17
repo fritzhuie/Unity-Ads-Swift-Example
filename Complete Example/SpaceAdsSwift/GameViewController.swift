@@ -54,7 +54,7 @@ class GameViewController: UIViewController, UnityAdsDelegate {
     }
     
     func unityAdsDidFinish(_ placementId: String, with state: UnityAdsFinishState) {
-        if !scene.responds(to: Selector("UnityAdsGetReward")){
+        if !scene.responds(to: Selector(("UnityAdsGetReward"))){
             print("selector 'UnityAdsGetReward' not available for scene \(scene)")
         }else if (state != .skipped && playerIsWatchingRewardedVideo) {
             let currentScene = scene as! PlanetScene

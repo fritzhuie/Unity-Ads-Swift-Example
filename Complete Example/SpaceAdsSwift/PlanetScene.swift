@@ -17,8 +17,7 @@ class PlanetScene : SKScene {
     //**** Play rewarded ad (non-skippable) *********/
     
     func UnityAdsPlayRewardedVideo() {
-        let vc = self.view!.window!.rootViewController as! GameViewController
-        vc.playAd("rewardedVideo", sender: self)
+
     }
     
     //**** callback from UIViewController ***********/
@@ -107,7 +106,7 @@ class PlanetScene : SKScene {
         fuelIcon.zPosition = 3
         rootNode.addChild(fuelIcon)
         
-        fuelPercentage.fontColor = SKColor(colorLiteralRed: 0, green: 144, blue: 255, alpha: 50)
+        fuelPercentage.fontColor = #colorLiteral(red: 0, green: 0.5647058824, blue: 1, alpha: 0.5)
         fuelPercentage.fontSize = 30
         fuelPercentage.fontName = "arial"
         fuelPercentage.position = CGPoint(x: self.frame.midX + 235, y: self.frame.midY - 120 - fuelPercentage.fontSize/2)
@@ -156,11 +155,11 @@ class PlanetScene : SKScene {
         generateSnow()
     }
     
-    func enableTouch() {
+    @objc func enableTouch() {
         touchEnabled = true
     }
     
-    func disableTouch() {
+    @objc func disableTouch() {
         touchEnabled = false
     }
     
@@ -269,7 +268,7 @@ class PlanetScene : SKScene {
         fadeOut.run(SKAction.sequence([wait, fade, transition]))
     }
     
-    func loadSpaceScene() {
+    @objc func loadSpaceScene() {
         let nextScene = SpaceScene(size: scene!.size)
         nextScene.scaleMode = .aspectFill
         scene?.view?.presentScene(nextScene)
